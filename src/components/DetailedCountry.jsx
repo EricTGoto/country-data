@@ -1,4 +1,5 @@
 import React from 'react';
+import Weather from './Weather';
 
 function DetailedCountry({ country }) {
   function parseLanguages() {
@@ -9,6 +10,7 @@ function DetailedCountry({ country }) {
 
   const languageList = () => parseLanguages().map((language) => <li>{language}</li>);
 
+  const { latlng } = country;
   return (
     <div className="detailed-country">
       {country.name.common}
@@ -18,6 +20,7 @@ function DetailedCountry({ country }) {
       <h3>Languages:</h3>
       {languageList()}
       <img src={country.flags.svg} alt={`${country.name.common}'s flag'`} className="country-flag" />
+      <Weather countryName={country.name.common} latlng={latlng} />
     </div>
   );
 }
