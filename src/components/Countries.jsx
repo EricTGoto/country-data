@@ -23,7 +23,6 @@ function Countries({ countryFilter }) {
   }
 
   const filteredCountries = filterCountries();
-  console.log(filteredCountries);
 
   const countriesList = () => {
     if (filteredCountries.length === 1) {
@@ -38,7 +37,6 @@ function Countries({ countryFilter }) {
     }
   };
 
-  console.log(typeof countriesList());
   return (
     <div>
       {countriesList()}
