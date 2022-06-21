@@ -13,12 +13,12 @@ function DetailedCountry({ country }) {
   const { latlng } = country;
   return (
     <div className="detailed-country">
-      {country.name.common}
-      {country.capital !== undefined ? country.capital[0] : 'None'}
-      {`Population:${country.population}`}
-      {`Area:${country.area}`}
+      <div className="country-name">{country.name.common}</div>
+      <div className="country-capital">{`Capital: ${country.capital !== undefined ? country.capital[0] : 'None'}`}</div>
+      <div>{`Population: ${country.population}`}</div>
+      <div>{`Area: ${country.area}km^2`}</div>
       <h3>Languages:</h3>
-      {languageList()}
+      <ul>{languageList()}</ul>
       <img src={country.flags.svg} alt={`${country.name.common}'s flag'`} className="country-flag" />
       <Weather countryName={country.name.common} latlng={latlng} />
     </div>
