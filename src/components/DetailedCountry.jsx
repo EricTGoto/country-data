@@ -12,7 +12,7 @@ function DetailedCountry({ country }) {
   return (
     <div className="detailed-country">
       {country.name.common}
-      {country.capital[0]}
+      {country.capital !== undefined ? country.capital[0] : 'None'}
       {`Population:${country.population}`}
       {`Area:${country.area}`}
       <h3>Languages:</h3>
