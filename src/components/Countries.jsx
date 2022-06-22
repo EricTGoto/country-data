@@ -1,15 +1,13 @@
-import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import Country from './Country';
+import CountryData from '../services/CountryData';
 
-// eslint-disable-next-line no-unused-vars
 function Countries({ countryFilter }) {
-  // eslint-disable-next-line no-unused-vars
   const [countryData, setCountryData] = useState([]);
   useEffect(() => {
-    axios.get('https://restcountries.com/v3.1/all').then((response) => {
-      setCountryData(response.data);
-    });
+    CountryData
+      .getAllCountryData()
+      .then((data) => setCountryData(data));
   }, []);
 
   function filterCountries() {

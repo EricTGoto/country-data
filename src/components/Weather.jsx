@@ -1,18 +1,14 @@
-import axios from 'axios';
 import React, { useState, useEffect } from 'react';
+import WeatherData from '../services/WeatherData';
 
 function Weather({ countryName, latlng }) {
   const [lat, lon] = latlng;
 
   const [weatherData, setWeatherData] = useState({});
   useEffect(() => {
-    // Not good to put API key in like this, but it's a free key.
-    // If this were an important production API key, I would use a secret
-    // hiding strategy like using a .env. Or if this had a backend,
-    // I would hide the key in the backend.
-    axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=c8778b555955e7f8a461624b17189b53`).then((response) => {
-      setWeatherData(response.data);
-    });
+    WeatherData
+      .getWeatherFromLatLon(lat, lon)
+      .then((data) => setWeatherData(data));
   }, []);
 
   let weatherElement;
